@@ -1,0 +1,458 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================
+   ENHANCED THEME SYSTEM - DARK/LIGHT MODE
+   =========================================== */
+:root {
+  /* Partner Branding Variablen */
+  --primary-color: #3B82F6;
+  --secondary-color: #1D4ED8;
+  --user-bubble-color: #3B82F6;
+  --agent-bubble-color: #E5E7EB;
+  --cmo-color: #8B5CF6;
+  --cfo-color: #F59E0B;
+  --coo-color: #10B981;
+  --second-brain-color: #3B82F6;
+  --zg-color: var(--second-brain-color);
+  
+  /* Theme Mode Variable */
+  --theme-mode: 'light'; /* 'light', 'dark', 'auto' */
+  
+  /* LIGHT THEME VARIABLES */
+  --theme-bg: #FFFFFF;
+  --theme-surface: #FFFFFF;
+  --theme-surface-secondary: #F9FAFB;
+  --theme-text: #111827;
+  --theme-text-secondary: #6B7280;
+  --theme-text-muted: #9CA3AF;
+  --theme-border: #E5E7EB;
+  --theme-border-light: #F3F4F6;
+  --theme-hover: #F3F4F6;
+  --theme-primary: var(--primary-color);
+  --theme-primary-hover: #2563EB;
+  --theme-shadow: rgba(0, 0, 0, 0.1);
+  --theme-shadow-lg: rgba(0, 0, 0, 0.15);
+  
+  /* Message Colors - Light Theme */
+  --user-message-bg: var(--user-bubble-color);
+  --agent-message-bg: #F3F4F6;
+  --second-brain-message-bg: #EFF6FF;
+  --cmo-message-bg: #F3E8FF;
+  --cfo-message-bg: #FFFBEB;
+  --coo-message-bg: #ECFDF5;
+  
+  /* Status Colors */
+  --theme-success: #10B981;
+  --theme-warning: #F59E0B;
+  --theme-error: #EF4444;
+  --theme-info: var(--primary-color);
+  
+  /* Error/Success Backgrounds */
+  --theme-success-bg: #ECFDF5;
+  --theme-success-border: #A7F3D0;
+  --theme-warning-bg: #FFFBEB;
+  --theme-warning-border: #FED7AA;
+  --theme-error-bg: #FEF2F2;
+  --theme-error-border: #FECACA;
+  --theme-info-bg: #EFF6FF;
+  --theme-info-border: #BFDBFE;
+}
+
+/* DARK THEME VARIABLES */
+[data-theme="dark"], 
+.dark,
+:root:has(.theme-dark) {
+  --theme-bg: #0F172A;
+  --theme-surface: #1E293B;
+  --theme-surface-secondary: #334155;
+  --theme-text: #F1F5F9;
+  --theme-text-secondary: #CBD5E1;
+  --theme-text-muted: #94A3B8;
+  --theme-border: #334155;
+  --theme-border-light: #475569;
+  --theme-hover: #334155;
+  --theme-primary: #60A5FA;
+  --theme-primary-hover: #3B82F6;
+  --theme-shadow: rgba(0, 0, 0, 0.3);
+  --theme-shadow-lg: rgba(0, 0, 0, 0.4);
+  
+  /* Message Colors - Dark Theme */
+  --user-message-bg: #3B82F6;
+  --agent-message-bg: #374151;
+  --second-brain-message-bg: #1E3A8A;
+  --cmo-message-bg: #581C87;
+  --cfo-message-bg: #92400E;
+  --coo-message-bg: #065F46;
+  
+  /* Dark theme agent colors */
+  --cmo-color: #A78BFA;
+  --cfo-color: #FBBF24;
+  --coo-color: #34D399;
+  --second-brain-color: #60A5FA;
+  
+  /* Error/Success Backgrounds - Dark */
+  --theme-success-bg: rgba(16, 185, 129, 0.1);
+  --theme-success-border: rgba(16, 185, 129, 0.3);
+  --theme-warning-bg: rgba(245, 158, 11, 0.1);
+  --theme-warning-border: rgba(245, 158, 11, 0.3);
+  --theme-error-bg: rgba(239, 68, 68, 0.1);
+  --theme-error-border: rgba(239, 68, 68, 0.3);
+  --theme-info-bg: rgba(59, 130, 246, 0.1);
+  --theme-info-border: rgba(59, 130, 246, 0.3);
+}
+
+/* AUTO THEME - follows system preference */
+@media (prefers-color-scheme: dark) {
+  :root:has(.theme-auto) {
+    --theme-bg: #0F172A;
+    --theme-surface: #1E293B;
+    --theme-surface-secondary: #334155;
+    --theme-text: #F1F5F9;
+    --theme-text-secondary: #CBD5E1;
+    --theme-text-muted: #94A3B8;
+    --theme-border: #334155;
+    --theme-border-light: #475569;
+    --theme-hover: #334155;
+    --theme-primary: #60A5FA;
+    --theme-primary-hover: #3B82F6;
+    --theme-shadow: rgba(0, 0, 0, 0.3);
+    --theme-shadow-lg: rgba(0, 0, 0, 0.4);
+    
+    --user-message-bg: #3B82F6;
+    --agent-message-bg: #374151;
+    --second-brain-message-bg: #1E3A8A;
+    --cmo-message-bg: #581C87;
+    --cfo-message-bg: #92400E;
+    --coo-message-bg: #065F46;
+    
+    --cmo-color: #A78BFA;
+    --cfo-color: #FBBF24;
+    --coo-color: #34D399;
+    --second-brain-color: #60A5FA;
+  }
+}
+
+/* ===========================================
+   THEME UTILITY CLASSES
+   =========================================== */
+
+/* Background Classes */
+.bg-theme-bg { background-color: var(--theme-bg) !important; }
+.bg-theme-surface { background-color: var(--theme-surface) !important; }
+.bg-theme-surface-secondary { background-color: var(--theme-surface-secondary) !important; }
+.bg-theme-hover { background-color: var(--theme-hover) !important; }
+.bg-theme-primary { background-color: var(--theme-primary) !important; }
+.bg-theme-primary-hover { background-color: var(--theme-primary-hover) !important; }
+
+/* Text Classes */
+.text-theme-text { color: var(--theme-text) !important; }
+.text-theme-text-secondary { color: var(--theme-text-secondary) !important; }
+.text-theme-text-muted { color: var(--theme-text-muted) !important; }
+.text-theme-primary { color: var(--theme-primary) !important; }
+.text-theme-success { color: var(--theme-success) !important; }
+.text-theme-warning { color: var(--theme-warning) !important; }
+.text-theme-error { color: var(--theme-error) !important; }
+
+/* Border Classes */
+.border-theme-border { border-color: var(--theme-border) !important; }
+.border-theme-border-light { border-color: var(--theme-border-light) !important; }
+.border-theme-primary { border-color: var(--theme-primary) !important; }
+
+/* Message Background Classes */
+.bg-user-message { background-color: var(--user-message-bg) !important; }
+.bg-agent-message { background-color: var(--agent-message-bg) !important; }
+.bg-second-brain-message { background-color: var(--second-brain-message-bg) !important; }
+.bg-cmo-message { background-color: var(--cmo-message-bg) !important; }
+.bg-cfo-message { background-color: var(--cfo-message-bg) !important; }
+.bg-coo-message { background-color: var(--coo-message-bg) !important; }
+
+/* Status Background Classes */
+.bg-theme-success-bg { background-color: var(--theme-success-bg) !important; }
+.bg-theme-warning-bg { background-color: var(--theme-warning-bg) !important; }
+.bg-theme-error-bg { background-color: var(--theme-error-bg) !important; }
+.bg-theme-info-bg { background-color: var(--theme-info-bg) !important; }
+
+.border-theme-success-border { border-color: var(--theme-success-border) !important; }
+.border-theme-warning-border { border-color: var(--theme-warning-border) !important; }
+.border-theme-error-border { border-color: var(--theme-error-border) !important; }
+.border-theme-info-border { border-color: var(--theme-info-border) !important; }
+
+/* Hover Classes */
+.hover-theme-hover:hover { background-color: var(--theme-hover) !important; }
+.hover-theme-primary:hover { background-color: var(--theme-primary-hover) !important; }
+
+/* Shadow Classes */
+.shadow-theme { box-shadow: 0 1px 3px 0 var(--theme-shadow), 0 1px 2px 0 var(--theme-shadow) !important; }
+.shadow-theme-lg { box-shadow: 0 10px 15px -3px var(--theme-shadow-lg), 0 4px 6px -2px var(--theme-shadow) !important; }
+
+/* ===========================================
+   ORIGINAL PARTNER BRANDING SYSTEM - ENHANCED
+   =========================================== */
+
+/* Dynamic Branding Classes - ENHANCED für Theme Support */
+.bg-primary-brand { background-color: var(--primary-color) !important; }
+.bg-secondary-brand { background-color: var(--secondary-color) !important; }
+.bg-cmo-brand { background-color: var(--cmo-color) !important; }
+.bg-cfo-brand { background-color: var(--cfo-color) !important; }
+.bg-coo-brand { background-color: var(--coo-color) !important; }
+.bg-second-brain-brand { background-color: var(--second-brain-color) !important; }
+.bg-zg-brand { background-color: var(--zg-color) !important; }
+
+.text-primary-brand { color: var(--primary-color) !important; }
+.text-secondary-brand { color: var(--secondary-color) !important; }
+.text-cmo-brand { color: var(--cmo-color) !important; }
+.text-cfo-brand { color: var(--cfo-color) !important; }
+.text-coo-brand { color: var(--coo-color) !important; }
+.text-second-brain-brand { color: var(--second-brain-color) !important; }
+.text-zg-brand { color: var(--zg-color) !important; }
+
+.border-primary-brand { border-color: var(--primary-color) !important; }
+.border-secondary-brand { border-color: var(--secondary-color) !important; }
+.border-cmo-brand { border-color: var(--cmo-color) !important; }
+.border-cfo-brand { border-color: var(--cfo-color) !important; }
+.border-coo-brand { border-color: var(--coo-color) !important; }
+.border-second-brain-brand { border-color: var(--second-brain-color) !important; }
+.border-zg-brand { border-color: var(--zg-color) !important; }
+
+/* Enhanced Opacity Classes with Theme Support */
+.bg-cmo-brand-10 { 
+  background-color: color-mix(in srgb, var(--cmo-color) 10%, transparent) !important;
+}
+.bg-cfo-brand-10 { 
+  background-color: color-mix(in srgb, var(--cfo-color) 10%, transparent) !important;
+}
+.bg-coo-brand-10 { 
+  background-color: color-mix(in srgb, var(--coo-color) 10%, transparent) !important;
+}
+.bg-second-brain-brand-10 { 
+  background-color: color-mix(in srgb, var(--second-brain-color) 10%, transparent) !important;
+}
+
+/* Tailwind-kompatible bg-opacity Classes für Partner Branding */
+.bg-cmo-brand.bg-opacity-10 { 
+  background-color: color-mix(in srgb, var(--cmo-color) 10%, transparent) !important; 
+}
+.bg-cfo-brand.bg-opacity-10 { 
+  background-color: color-mix(in srgb, var(--cfo-color) 10%, transparent) !important; 
+}
+.bg-coo-brand.bg-opacity-10 { 
+  background-color: color-mix(in srgb, var(--coo-color) 10%, transparent) !important; 
+}
+.bg-second-brain-brand.bg-opacity-10 { 
+  background-color: color-mix(in srgb, var(--second-brain-color) 10%, transparent) !important; 
+}
+
+/* ===========================================
+   MODERN UI ENHANCEMENTS
+   =========================================== */
+
+/* Glassmorphism Effects */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--theme-surface) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-border) 50%, transparent);
+}
+
+.glass-effect-strong {
+  backdrop-filter: blur(20px);
+  background: color-mix(in srgb, var(--theme-surface) 90%, transparent);
+  border: 1px solid color-mix(in srgb, var(--theme-border) 70%, transparent);
+}
+
+/* Modern Card Styles */
+.modern-card {
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px var(--theme-shadow), 0 2px 4px -1px var(--theme-shadow);
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+  box-shadow: 0 10px 15px -3px var(--theme-shadow-lg), 0 4px 6px -2px var(--theme-shadow);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Button Styles */
+.btn-modern-primary {
+  background: var(--theme-primary);
+  color: white;
+  border: 1px solid var(--theme-primary);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--theme-primary) 20%, transparent);
+}
+
+.btn-modern-primary:hover {
+  background: var(--theme-primary-hover);
+  border-color: var(--theme-primary-hover);
+  box-shadow: 0 4px 8px color-mix(in srgb, var(--theme-primary) 30%, transparent);
+  transform: translateY(-1px);
+}
+
+.btn-modern-secondary {
+  background: var(--theme-surface);
+  color: var(--theme-text);
+  border: 1px solid var(--theme-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-modern-secondary:hover {
+  background: var(--theme-hover);
+  border-color: var(--theme-primary);
+  color: var(--theme-primary);
+}
+
+/* Modern Input Styles */
+.input-modern {
+  background: var(--theme-surface);
+  border: 1px solid var(--theme-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: var(--theme-text);
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input-modern::placeholder {
+  color: var(--theme-text-muted);
+}
+
+.input-modern:focus {
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--theme-primary) 10%, transparent);
+}
+
+/* Modern Chat Message Styles */
+.message-bubble-user {
+  background: var(--user-message-bg);
+  color: white;
+  border-radius: 1.5rem 1.5rem 0.25rem 1.5rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--user-message-bg) 30%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.message-bubble-agent {
+  background: var(--agent-message-bg);
+  color: var(--theme-text);
+  border-radius: 1.5rem 1.5rem 1.5rem 0.25rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 8px var(--theme-shadow);
+  border: 1px solid var(--theme-border);
+  backdrop-filter: blur(8px);
+}
+
+/* Theme Transition Animations */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Scroll Enhancements */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-border) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--theme-border);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--theme-text-muted);
+}
+
+/* ===========================================
+   ACCESSIBILITY & RESPONSIVE ENHANCEMENTS
+   =========================================== */
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --theme-border: #000000;
+    --theme-text: #000000;
+    --theme-bg: #FFFFFF;
+  }
+  
+  [data-theme="dark"] {
+    --theme-border: #FFFFFF;
+    --theme-text: #FFFFFF;
+    --theme-bg: #000000;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-transition,
+  .modern-card,
+  .btn-modern-primary,
+  .btn-modern-secondary,
+  .input-modern {
+    transition: none;
+  }
+  
+  .modern-card:hover {
+    transform: none;
+  }
+  
+  .btn-modern-primary:hover {
+    transform: none;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .message-bubble-user,
+  .message-bubble-agent {
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    max-width: 85%;
+  }
+  
+  .modern-card {
+    border-radius: 0.75rem;
+    margin: 0.5rem;
+  }
+  
+  .btn-modern-primary,
+  .btn-modern-secondary {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+}
+
+/* Theme Selector Classes for JavaScript Control */
+.theme-light { 
+  /* Applied via JavaScript when light theme is selected */ 
+}
+
+.theme-dark { 
+  /* Applied via JavaScript when dark theme is selected */ 
+}
+
+.theme-auto { 
+  /* Applied via JavaScript when auto theme is selected */ 
+}
+
+/* Utility for Theme Detection */
+.theme-detector {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
